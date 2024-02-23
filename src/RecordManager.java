@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repository {
+public class RecordManager {
   List<Record> records;
 
-  public Repository(String filePath) {
+  public RecordManager(String filePath) {
     records = new ArrayList<>();
 
     try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
