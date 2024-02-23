@@ -25,7 +25,7 @@ public class RecordManager {
               Float averageRating = Float.parseFloat(parts[1]);
               Integer numVotes = Integer.parseInt(parts[2]);
 
-              Record record = new Record(tconst, averageRating, numVotes);
+              Record record = new Record(tconst, averageRating, numVotes, (short) 0);
               sortedRecords.add(record);
           } else {
               System.err.println(String.format("Expected 3 columns but received: %s", parts));
@@ -46,8 +46,10 @@ public class RecordManager {
    * 
    */
   public void printHead() {
+    System.out.println("#####\tPrinting head of RecordManager\t#####");
     for(Integer i = 0; i < 10; i++) {
       System.out.println(records.get(i));
     }
+    System.out.println();
   } 
 }
