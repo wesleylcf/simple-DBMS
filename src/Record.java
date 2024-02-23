@@ -23,4 +23,9 @@ public class Record {
   public Integer getNumVotes() {
     return numVotes;
   }
+
+  @Override
+  public String toString() {
+      return String.format("{ uuid:'%s', averageRating:%f, numVotes:%d }", this.uuid, this.averageRating, this.numVotes);
+  }
 }

@@ -37,4 +37,13 @@ public class Repository {
   public Record getRecordAtIndex(Integer index) {
     return records.get(index);
   }
+
+  /*
+   * 
+   */
+  public void printHead() {
+    for(Integer i = 0; i < 10; i++) {
+      System.out.println(records.get(i));
+    }
+  } 
 }
