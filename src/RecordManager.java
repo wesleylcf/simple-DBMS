@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -47,7 +46,7 @@ public class RecordManager {
    */
   public void printHead() {
     System.out.println("#####\tPrinting head of RecordManager\t#####");
-    for(Integer i = 0; i < 10; i++) {
+    for(Integer i = 0; i < Math.min(10, records.size()); i++) {
       System.out.println(records.get(i));
     }
     System.out.println();

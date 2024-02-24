@@ -6,13 +6,11 @@ import java.util.Map;
 class BlockManager {
     private int tombstones = 0;
     private Map<Integer, ArrayList<Integer>> tombstonesByBlock = new HashMap<>();
-    private Integer numRecords;
+    private Integer numRecords = 0;
     private ArrayList<Block> blocks = new ArrayList<>();
 
     public BlockManager(List<Record> seedRecords) {
-        numRecords = seedRecords.size();
         blocks.add(new Block());
-
         for (Record r : seedRecords) {
             insertRecord(r);
         }
@@ -102,8 +100,13 @@ class BlockManager {
   
   
 
-    public void printState() {
+    public void printState(Boolean verbose) {
       System.out.println("#####\tPrinting state of BlockManager\t#####");
+      if(verbose) {
+        for (Block b: blocks) {
+          System.out.println(b);
+        }
+      }
       System.out.println(String.format("Number of records: %d", numRecords));
       System.out.println(String.format("Size of record in bytes: %d", Record.RECORD_BYTE_SIZE));
       System.out.println(String.format("Max number of records in a block: %d", Block.MAX_RECORDS_PER_BLOCK));

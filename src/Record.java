@@ -33,11 +33,11 @@ public class Record {
 
     byte[] uuidBytes = uuid.getBytes();
     buffer.put(uuidBytes);
+    buffer.position(4 + UUID_BYTE_SIZE); // uuid is variable sized but we want it fixed to UUID_BYTE_SIZE
     buffer.put(padding2);
 
     buffer.putFloat(averageRating);
     buffer.putInt(numVotes);
-
     return buffer.array();
   }
 
@@ -48,19 +48,18 @@ public class Record {
     ByteBuffer buffer = ByteBuffer.wrap(bytes);
 
     short isDeleted = buffer.getShort();
-    buffer.get(new byte[2]); // Skip padding1
+    buffer.position(buffer.position() + 2);
 
     byte[] uuidBytes = new byte[UUID_BYTE_SIZE];
     buffer.get(uuidBytes);
-    buffer.get(new byte[2]); // Skip padding2
+
+    buffer.position(buffer.position() + 2);
     String uuid = new String(uuidBytes);
 
     float averageRating = buffer.getFloat();
     int numVotes = buffer.getInt();
 
-    Record record = new Record(uuid, averageRating, numVotes, isDeleted);
-
-    return record;
+    return new Record(uuid, averageRating, numVotes, isDeleted);
   }
 
   public void markAsTombstone() {

@@ -110,4 +110,14 @@ public class Block {
   public void setRecordCount(Integer count) {
     bytes.putInt(0, count);
   }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    int recordCount = getRecordCount();
+    for (int i = 0; i < recordCount; i++) {
+      sb.append(String.format("%s\n", getRecordFromBytes(BLOCK_HEADER_BYTE_SIZE + i*Record.RECORD_BYTE_SIZE)));
+    }
+    return sb.toString();
+  }
 }
