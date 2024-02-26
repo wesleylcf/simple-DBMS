@@ -4,8 +4,10 @@ public class App {
         String filePath = System.getProperty("user.dir") + "/data.tsv";
         RecordManager recordManager = new RecordManager(filePath);
         recordManager.printHead();
+        // Init disk memory
+        Disk disk = new Disk(Block.BLOCK_BYTE_SIZE);
         // Put seed data into Blocks
-        BlockManager blockManager = new BlockManager(recordManager.records);
+        StorageManager blockManager = new StorageManager(recordManager.records, disk);
         blockManager.printState(false);
         // Initialize default B tree using uuid(primary key)
 

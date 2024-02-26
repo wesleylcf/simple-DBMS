@@ -1,5 +1,8 @@
 import java.nio.ByteBuffer;
 
+/**
+ * Temporary Block interface object to interact with bytes in the disk
+ */
 public class Block {
   public static final Integer BLOCK_BYTE_SIZE = 200;
   public static final Integer BLOCK_HEADER_BYTE_SIZE = 4;
@@ -9,6 +12,10 @@ public class Block {
   public Block() {
     bytes = ByteBuffer.allocate(BLOCK_BYTE_SIZE);
     bytes.putInt(0); // block header contains number of records initially 0
+  }
+
+  public Block(byte[] bytes) {
+    this.bytes =  ByteBuffer.wrap(bytes);
   }
 
   public void insertRecordAt(int position, Record record) {
@@ -119,5 +126,9 @@ public class Block {
       sb.append(String.format("%s\n", getRecordFromBytes(BLOCK_HEADER_BYTE_SIZE + i*Record.RECORD_BYTE_SIZE)));
     }
     return sb.toString();
+  }
+
+  public byte[] marshal() {
+    return this.bytes.array();
   }
 }
