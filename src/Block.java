@@ -55,38 +55,6 @@ public class Block {
     setRecordCount(numRecords + 1);
   }
 
-  public Integer removeRecord(String recordUuid) {
-    int numRecords = bytes.getInt(0);
-
-    if (numRecords == 0) {
-        throw new IllegalStateException("No records in the block");
-    }
-
-    int recordIndexToDelete = -1;
-    for (int i = 0; i < numRecords; i++) {
-        Record currentRecord = getRecordAt(i);
-        if (currentRecord.getUuid().equals(recordUuid)) {
-            recordIndexToDelete = i;
-            break;  // Record found, exit the loop
-        }
-    }
-
-    if (recordIndexToDelete == -1) {
-        // Record with the specified UUID not found
-        throw new IllegalArgumentException("Record not found in the block");
-    }
-
-    int recordPositionToDelete = BLOCK_HEADER_BYTE_SIZE + recordIndexToDelete * Record.RECORD_BYTE_SIZE;
-    Record recordToDelete = getRecordFromBytes(recordPositionToDelete);
-    recordToDelete.markAsTombstone();
-    
-    bytes.position(recordPositionToDelete);
-    bytes.put(recordToDelete.marshal());
-
-    setRecordCount(numRecords - 1);
-    return recordIndexToDelete;
-  }
-
   public Record getRecordAt(int recordIndex) {
     int numRecords = bytes.getInt(0);
 

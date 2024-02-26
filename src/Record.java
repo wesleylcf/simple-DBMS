@@ -62,10 +62,6 @@ public class Record {
     return new Record(uuid, averageRating, numVotes, isDeleted);
   }
 
-  public void markAsTombstone() {
-    isDeleted = 1;
-  }
-
   public boolean isTombstone() {
     return isDeleted == 1;
   }
