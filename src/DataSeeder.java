@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataSeeder {
-
-
   public static void seed(String filePath, StorageManager storageManager) {
     ArrayList<Record> records = new ArrayList<Record>();
 
