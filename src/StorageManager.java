@@ -6,9 +6,11 @@ class StorageManager {
   private Integer numRecords = 0;
   private int occupiedBlocks = 0;
   Disk disk;
+  StorageConfiguration config;
 
-  public StorageManager(Disk disk) {
+  public StorageManager(Disk disk, StorageConfiguration storageConfiguration) {
     this.disk = disk;
+    config = storageConfiguration;
   }
 
   /**
@@ -68,7 +70,7 @@ class StorageManager {
    * If so delete tombstones and reclaim space to reduce fragmentation
    */
   private void checkAndRunCompaction() {
-    if (getDiskUtilization() < 0.9) {
+    if (getDiskUtilization() < this.config.getCompactionThreshold()) {
       return;
     }
     int currentBlockNumber = 1;
