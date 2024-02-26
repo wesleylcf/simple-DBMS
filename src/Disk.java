@@ -4,7 +4,6 @@ class Disk {
   public static int DISK_BYTE_SIZE = 500 * (int) Math.pow(2, 20);
   private int blockSizeInBytes;
   private ByteBuffer bytes;
-  private int occupiedBlocks = 0;
 
   public Disk(int blockSizeInBytes) {
     this.blockSizeInBytes = blockSizeInBytes;

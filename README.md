@@ -3,7 +3,7 @@
   Note: Given the project requirements has to do with only the Storage and Indexing parts of a DBMS, the design uses a simplified design that tries to inherit some of the best practices that are used in practice for actual RDBMS, and may not handle some of the other requirements of DBMS like concurrency control, transaction isolation, and crash recovery.
 
   ### Specifications
-  - Disk is just a byte[]. However we can think of it as having many Blocks
+  - Disk is just a byte[] of 500MB. However we can think of it as having many Blocks
   - A block is a logical unit representing some slice of the Disk.
   - Each block is 200 Bytes
   - Each block has a 4 Byte block header containing an integer = # of records in the block currently

@@ -1,8 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Blocks are logical units representing a particular slice of the Disk
  * This class is to encapsulate the logic for interactions between Disk and Block
@@ -12,15 +7,8 @@ class StorageManager {
     private int occupiedBlocks = 0;
     Disk disk;
 
-    public StorageManager(List<Record> seedRecords, Disk disk) {
+    public StorageManager(Disk disk) {
       this.disk = disk;
-      int seedByteSize = seedRecords.size() * Record.RATING_BYTE_SIZE;
-      if (seedRecords.size() * Record.RATING_BYTE_SIZE >= Disk.DISK_BYTE_SIZE) {
-        throw new IllegalArgumentException(String.format("Seed data size(%d Bytes) exceeds disk size(%d Bytes)", seedByteSize, Disk.DISK_BYTE_SIZE));
-      }
-      for(Record r : seedRecords) {
-        insertRecord(r);
-      }
     }
 
     /**
@@ -104,7 +92,7 @@ class StorageManager {
       }
   }
     public void printState(Boolean verbose) {
-      System.out.println("#####\tPrinting state of BlockManager\t#####");
+      System.out.println("#####\tPrinting state of Storage\t#####");
       if(verbose) {
         for (int blockNumber = 1; blockNumber <= occupiedBlocks; blockNumber ++) {
           System.out.println(disk.getBlock(blockNumber));
@@ -114,7 +102,7 @@ class StorageManager {
       System.out.println(String.format("Size of record in bytes: %d", Record.RECORD_BYTE_SIZE));
       System.out.println(String.format("Max number of records in a block: %d", Block.MAX_RECORDS_PER_BLOCK));
       System.out.println(String.format("Current number of occupied blocks: %d", occupiedBlocks));
+      System.out.println(String.format("Disk utilization: %f %%", (float) (numRecords*Record.RECORD_BYTE_SIZE ) / Disk.DISK_BYTE_SIZE * 100));
       System.out.println();
     }
-
 }
