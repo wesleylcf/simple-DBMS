@@ -7,10 +7,12 @@ class StorageManager {
   private int occupiedBlocks = 0;
   Disk disk;
   StorageConfiguration config;
+  CrashRecovery recovery;
 
-  public StorageManager(Disk disk, StorageConfiguration storageConfiguration) {
+  public StorageManager(Disk disk, StorageConfiguration storageConfiguration, CrashRecovery recovery) {
     this.disk = disk;
-    config = storageConfiguration;
+    this.config = storageConfiguration;
+    this.recovery = recovery;
   }
 
   /**
@@ -18,6 +20,7 @@ class StorageManager {
    * @param record Record to be inserted
    */
   public void insertRecord(Record r) {
+    recovery.logOperation(CrashRecovery.OPERATION.INSERT, r);
     int recordPositionInDisk; 
     if (occupiedBlocks == 0) {
       Block block = new Block();
@@ -45,6 +48,7 @@ class StorageManager {
    * @param record Record to delete
    */
   public void deleteRecord(Record r) {
+    recovery.logOperation(CrashRecovery.OPERATION.DELETE, r);
     Record recordTombstone = new Record(r.getUuid(), r.getAverageRating(), r.getNumVotes(), (short) 1);
     insertRecord(recordTombstone);
     this.checkAndRunCompaction();
