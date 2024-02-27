@@ -5,11 +5,11 @@ public class App {
         // Init storage related components
         WriteAheadLog writeAheadLog = new WriteAheadLog(System.getProperty("user.dir") + "/wal.tsv");
         StorageConfiguration storageConfiguration = new StorageConfiguration.Builder().build();
-        StorageManager blockManager = new StorageManager(disk, storageConfiguration, writeAheadLog);
+        StorageManager storageManager = new StorageManager(disk, storageConfiguration, writeAheadLog);
 
         // seed data;
-        DataSeeder.seed(System.getProperty("user.dir") + "/data.tsv", blockManager);
-        blockManager.printState(false);
+        DataSeeder.seed(System.getProperty("user.dir") + "/data.tsv", storageManager);
+        storageManager.printState(false);
 
         // Initialize default B tree using uuid(primary key)
 
