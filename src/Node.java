@@ -5,6 +5,7 @@ public class Node {
     private ArrayList<Integer> keys;
     private ArrayList<Integer> children;
     // private ParentNode parent;
+    private Node parent;
     private boolean leaf;
     private boolean root;
     private String label;
