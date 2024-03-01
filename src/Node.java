@@ -15,55 +15,6 @@ public class Node {
         leaf = false;
         root = false;
     }
-    
-    /**
-     * Getter for leaf field
-     */
-    public boolean getleaf() {
-        return this.leaf;
-    }
-
-    /**
-     * Setter for leaf field
-     */
-    public void setleaf(boolean leaf) {
-        this.leaf = leaf;
-    }
-
-    /**
-     * Getter for root field
-     */
-    public boolean getroot() {
-        return this.root;
-    }
-
-    /**
-     * Setter for root field
-     */
-    public void setroot(boolean root) {
-        root = root;
-    }
-
-    /**
-     * Getter for parent field
-     */
-    public ParentNode getParent() {
-        return this.parent;
-    }
-
-    /**
-     * Setter for parent field
-     */
-    public void setParent(ParentNode pn) {
-        parent = pn;
-    }
-
-    /**
-     * Getter for keys field
-     */
-    public ArrayList<Integer> returnKeys() {
-        return this.keys;
-    }
 
     /**
      * Obtain key of given index
@@ -172,5 +123,56 @@ public class Node {
         keys = new ArrayList<Integer>();
     }
 
-    abstract void logStructure();
+    // abstract void logStructure();
+
+    // Getters and Setters
+
+    /**
+     * Getter for leaf field
+     */
+    public boolean getleaf() {
+        return this.leaf;
+    }
+
+    /**
+     * Setter for leaf field
+     */
+    public void setleaf(boolean leaf) {
+        this.leaf = leaf;
+    }
+
+    /**
+     * Getter for root field
+     */
+    public boolean getroot() {
+        return this.root;
+    }
+
+    /**
+     * Setter for root field
+     */
+    public void setroot(boolean root) {
+        root = root;
+    }
+
+    /**
+     * Getter for parent field
+     */
+    public ParentNode getParent() {
+        return this.parent;
+    }
+
+    /**
+     * Setter for parent field
+     */
+    public void setParent(ParentNode pn) {
+        parent = pn;
+    }
+
+    /**
+     * Getter for keys field
+     */
+    public ArrayList<Integer> returnKeys() {
+        return this.keys;
+    }
 }
