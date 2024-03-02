@@ -24,7 +24,7 @@ public class Node {
     /**
      * Add key to keys list
      */
-    public int addKey(int key) {
+    public int appendKey(int key) {
 
         int len = this.returnKeys().size();
 
@@ -117,11 +117,11 @@ public class Node {
             int ind;
 
             if (k >= s) {
-                this.children.add(this.addKey(k) +1, child);   
+                this.children.add(this.appendKey(k) +1, child);   
             }
             else {
                 ind = 0;
-                this.addKey(s);
+                this.appendKey(s);
                 this.children.add(0, child);
             }
 
@@ -145,7 +145,7 @@ public class Node {
         for (int j = 0; j < size; j++) {
             if (j != 0){
                 int smallest = children.get(j).returnSmallest();
-                addKey(smallest);
+                appendKey(smallest);
             }
         }
     }
@@ -160,7 +160,7 @@ public class Node {
         for (int j = 0; j < size; j++) {
             if (j != 0){
                 int smallest = children.get(j).returnSmallest();
-                addKey(smallest);
+                appendKey(smallest);
             }
         }
     }
