@@ -60,22 +60,19 @@ public class Node {
     public int returnSmallest() {
 
         int key;
-        ParentNode copy;
+        Node copy;
         boolean isLeaf = this.returnLeaf();
 
         if (!isLeaf) {
 
-            copy = (ParentNode) this;
+            copy = this;
 
-            while (!copy.getChild(0).returnLeaf())
-                copy = (ParentNode) copy.getChild(0);
+            while (!copy.returnChild(0).returnLeaf())
+                copy = copy.returnChild(0);
             
-            key = copy.getChild(0).returnKey(0);
+            key = copy.returnChild(0).returnKey(0);
         }
-
-        else 
-            key = this.returnKey(0);
-
+        else{key = this.returnKey(0);} 
         return key;
     }
 
@@ -91,7 +88,7 @@ public class Node {
         }
 
         if (this.leaf) {
-            LeafNode copy = (LeafNode) this;
+            Node copy = this;
             copy.records = new ArrayList<Address>();
             copy.setNext(null);
         }
@@ -220,14 +217,14 @@ public class Node {
     /**
      * Getter for parent field
      */
-    public ParentNode returnParent() {
+    public Node returnParent() {
         return this.parent;
     }
 
     /**
      * Setter for parent field
      */
-    public void setParent(ParentNode pn) {
+    public void setParent(Node pn) {
         parent = pn;
     }
 
