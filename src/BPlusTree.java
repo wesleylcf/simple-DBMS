@@ -1,18 +1,25 @@
 import java.util.*;
 
 public class BPlusTree {
-    private static final int SIZE_POINTER = 6;
-    private static final int SIZE_KEY = 4;
+    private static final int POINTER_SIZE = 8;
+    private static final int KEY_SIZE = 4;
 
     int maxKeys;
     int parentMinKeys;
     int leafMinKeys;
-
-    Node root;
-
     int height;
     int nodeCount;
     int deletedCount;
+    Node root;
+
+    public BPlusTree(int blockSize){
+        maxKeys = (blockSize-POINTER_SIZE) / (KEY_SIZE+POINTER_SIZE);
+        parentMinKeys = (int) Math.floor(maxKeys/2);
+        leafMinKeys = (int) Math.floor((maxKeys+1)/2);
+        root = createTree();
+        nodeCount = 0;
+        deletedCount = 0;
+    }
 
     public Node createTree() {
         Node root = new Node(false, false);
@@ -533,7 +540,6 @@ public class BPlusTree {
         }
         return result;
     }
-
 
     public void treeStats() {
 

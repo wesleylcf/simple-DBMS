@@ -7,15 +7,17 @@ public class Node {
     private ArrayList<Address> records;
     private Node parent;
     private Node next;  // For leafnode
-    private boolean leaf;
-    private boolean root;
+    private boolean isLeaf;
+    private boolean isRoot;
     private boolean isParent;
+
+
     private String label;
 
     public Node(boolean isParent, boolean isLeaf) {
         this.keys = new ArrayList<Integer>();
-        this.leaf = isLeaf;
-        this.root = false;
+        this.isLeaf = isLeaf;
+        this.isRoot = false;
         this.isParent = isParent;
         if(isParent){this.children = new ArrayList<Node>();}
         if(isLeaf){records = new ArrayList<Address>();}
@@ -87,7 +89,7 @@ public class Node {
             parent = null;
         }
 
-        if (this.leaf) {
+        if (this.isLeaf) {
             Node copy = this;
             copy.records = new ArrayList<Address>();
             copy.setNext(null);
@@ -100,8 +102,8 @@ public class Node {
             }
         }
 
-        this.leaf = false;
-        this.root = false;
+        this.isLeaf = false;
+        this.isRoot = false;
         keys = new ArrayList<Integer>();
     }
 
@@ -187,31 +189,33 @@ public class Node {
     // Getters and Setters
 
     /**
-     * Getter for leaf field
+     * Getter for isLeaf
+     field
      */
     public boolean returnLeaf() {
-        return this.leaf;
+        return this.isLeaf;
     }
 
     /**
-     * Setter for leaf field
+     * Setter for isLeaf
+     field
      */
-    public void setLeaf(boolean leaf) {
-        this.leaf = leaf;
+    public void setLeaf(boolean isLea) {
+        this.isLeaf = isLeaf;
     }
 
     /**
-     * Getter for root field
+     * Getter for isRoot field
      */
     public boolean returnRoot() {
-        return this.root;
+        return this.isRoot;
     }
 
     /**
-     * Setter for root field
+     * Setter for isRoot field
      */
-    public void setRoot(boolean root) {
-        root = root;
+    public void setRoot(boolean isRoot) {
+        isRoot = isRoot;
     }
 
     /**
@@ -294,7 +298,8 @@ public class Node {
     }
 
     /**
-     * Returns next leaf node
+     * Returns next isLeaf
+     node
      */
     public Node returnNext() {
         return this.next;
