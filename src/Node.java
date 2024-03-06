@@ -3,7 +3,7 @@ import java.util.*;
 public class Node {
     
     private ArrayList<Integer> keys;
-    private ArrayList<Integer> children;
+    private ArrayList<Node> children;
     private ArrayList<Address> records;
     private Node parent;
     private Node next;  // For leafnode
@@ -12,7 +12,7 @@ public class Node {
     private boolean isParent;
     private String label;
 
-    public Node(boolean isParent = false, boolean isLeaf = false) {
+    public Node(boolean isParent, boolean isLeaf) {
         this.keys = new ArrayList<Integer>();
         this.leaf = isLeaf;
         this.root = false;
@@ -93,7 +93,7 @@ public class Node {
             copy.setNext(null);
         }
         else {
-            if(this.isParent == false){System.out.println("Node needs ot be a parent.")}
+            if(this.isParent == false){System.out.println("Node needs ot be a parent.");}
             else{
                 Node copy = this;
                 copy.children = new ArrayList<Node>();
@@ -171,7 +171,7 @@ public class Node {
     public Node returnChildBefore(Node node){
         int ind = children.indexOf(node);
         if (ind == 0){return null;}
-        else{return children.get(children.indexOf(node)-1)};
+        else{return children.get(children.indexOf(node)-1);}
     }
 
     /**
@@ -266,8 +266,31 @@ public class Node {
     /**
      * Returns record of specified index
      */
-    public Address returnRecords(int ind){
+    public Address returnRecord(int ind){
         return this.records.get(ind);
+    }
+
+    /**
+     * Adds records to address
+     */
+    public int addRecord(int key, Address address) {
+        if (this.returnRecords().size() == 0) {
+
+            this.records.add(address);
+            this.appendKey(key);
+            return 0;
+        }
+
+        int index;
+        index = appendKey(key);
+        records.add(address);
+
+        for (int i = records.size() -2; i >= index; i--) 
+            records.set(i+1, records.get(i));
+        
+        records.set(index, address);
+
+        return index;
     }
 
     /**
@@ -283,4 +306,23 @@ public class Node {
     public void setNext(Node node) {
         this.next = node;
     }
+
+    public void deleteRecord(int index) {
+        deleteKey(index);
+        records.remove(index);
+    }
+
+    public void deleteRecords() {
+        this.records = new ArrayList<Address>();
+    }
+
+    public void deleteKeys() {
+        this.keys = new ArrayList<Integer>();
+    }
+
+    public void deleteKey(int index) {
+        keys.remove(index);
+    }
+
+
 }

@@ -3,7 +3,7 @@ public class Address {
     int offset;
 
     public Address(int id, int off){
-        this.id=blockId;
+        this.id=id;
         this.offset=off;
     }
 
