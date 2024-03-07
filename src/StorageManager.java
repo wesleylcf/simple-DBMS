@@ -76,7 +76,7 @@ class StorageManager {
     /**
      * Obtain the list of addresses from the B+ tree based on numVotes
      *
-     * @param numVotes numVotes is the key in the  B+ tree
+     * @param numVotes The number of votes to search for in the records
      */
     public void retrieveRecordsByNumVotes(int numVotes) {
         long startTime = System.currentTimeMillis();
@@ -116,19 +116,21 @@ class StorageManager {
     /**
      * Obtain the list of addresses from the disk by brute-force linear scan
      *
-     * @param numVotes numVotes is the key in the  B+ tree
+     * @param numVotes The number of votes to search for in the records
      */
     public void linearScanByNumVotes(int numVotes) {
         long startTime = System.currentTimeMillis();
 
+        HashSet<Integer> accessedBlocks = new HashSet<>();
         int blockAccessCounter = 0;
         double averageRatingSum = 0;
         int recordCounter = 0;
 
-        for (int blockNumber = 1; blockNumber <= occupiedBlocks; blockNumber++) {
-            Block block = disk.getBlock(blockNumber);
-            blockAccessCounter++;
-
+        for (int blockId = 1; blockId <= occupiedBlocks; blockId++) {
+            Block block = disk.getBlock(blockId);
+            if (accessedBlocks.add(blockId)) {
+                blockAccessCounter++;
+            }
             for (int recordIndex = 0; recordIndex < block.getRecordCount(); recordIndex++) {
                 Record recordObtained = block.getRecordAt(recordIndex);
                 if (!recordObtained.isTombstone() && recordObtained.getNumVotes() == numVotes) {
@@ -196,13 +198,16 @@ class StorageManager {
     public void linearScanByNumVotesRange(int min, int max) {
         long startTime = System.currentTimeMillis();
 
+        HashSet<Integer> accessedBlocks = new HashSet<>();
         int blockAccessCounter = 0;
         double averageRatingSum = 0;
         int recordCounter = 0;
 
-        for (int blockNumber = 1; blockNumber <= occupiedBlocks; blockNumber++) {
-            Block block = disk.getBlock(blockNumber);
-            blockAccessCounter++;
+        for (int blockId = 1; blockId <= occupiedBlocks; blockId++) {
+            Block block = disk.getBlock(blockId);
+            if (accessedBlocks.add(blockId)) {
+                blockAccessCounter++;
+            }
 
             for (int recordIndex = 0; recordIndex < block.getRecordCount(); recordIndex++) {
                 Record recordObtained = block.getRecordAt(recordIndex);
@@ -221,6 +226,67 @@ class StorageManager {
         printStatistics("Brute-force Linear Scan", blockAccessCounter, averageRating, duration);
     }
 
+    /**
+     * Obtain the list of addresses from the B+ tree based on range of numVotes
+     *
+     * @param numVotes The number of votes to search for in the records
+     */
+    public void deleteRecordsByNumVotes(int numVotes) {
+        long startTime = System.currentTimeMillis();
+
+        ArrayList<Address> addresses = bPlusTree.getRecordsWithKey(numVotes);
+        int blockAccessCounter = 0;
+        HashSet<Integer> accessedBlocks = new HashSet<>();
+
+        for (Address address : addresses) {
+            int blockId = address.returnId();
+            if (accessedBlocks.add(blockId)) {
+                blockAccessCounter++;
+            }
+
+            Block block = disk.getBlock(blockId);
+            Record recordToDelete = block.getRecordAt(address.getOffset());
+            if (!recordToDelete.isTombstone() && recordToDelete.getNumVotes() == numVotes) {
+                deleteRecord(recordToDelete);
+            }
+        }
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+
+        printStatistics("B+ Tree", blockAccessCounter, null, duration);
+    }
+
+    /**
+     * Obtain the list of addresses from the disk by brute-force linear scan
+     *
+     * @param numVotes The number of votes to search for in the records.
+     *
+     */
+    public void linearScanDeleteByNumVotes(int numVotes) {
+        long startTime = System.currentTimeMillis();
+        int blockAccessCounter = 0;
+        HashSet<Integer> accessedBlocks = new HashSet<>();
+
+        for (int blockId = 1; blockId <= occupiedBlocks; blockId++) {
+            Block block = disk.getBlock(blockId);
+            if (accessedBlocks.add(blockId)) {
+                blockAccessCounter++;
+            }
+
+            for (int recordIndex = 0; recordIndex < block.getRecordCount(); recordIndex++) {
+                Record recordToDelete = block.getRecordAt(recordIndex);
+                if (!recordToDelete.isTombstone() && recordToDelete.getNumVotes() == numVotes) {
+                    deleteRecord(recordToDelete);
+                }
+            }
+
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+
+            printStatistics("Brute-force Linear Scan", blockAccessCounter, null, duration);
+        }
+    }
 
 //    public void updateRecordByPrimaryKey() {
 //        // Call readRecordByPrimaryKey
@@ -231,7 +297,7 @@ class StorageManager {
     /**
      * For simplicity assume all blocks are full
      */
-    public float getDiskUtilization() {
+    public float getDiskUtilization () {
         return (float) (occupiedBlocks * Block.BLOCK_BYTE_SIZE) / Disk.DISK_BYTE_SIZE;
     }
 
@@ -239,7 +305,7 @@ class StorageManager {
      * Check if disk utilization is over 90%.
      * If so delete tombstones and reclaim space to reduce fragmentation
      */
-    private void checkAndRunCompaction() {
+    private void checkAndRunCompaction () {
         if (getDiskUtilization() < this.config.getCompactionThreshold()) {
             return;
         }
@@ -271,7 +337,7 @@ class StorageManager {
         }
     }
 
-    public void printState(Boolean verbose) {
+    public void printState (Boolean verbose){
         System.out.println("#####\tPrinting state of Storage\t#####");
         if (verbose) {
             for (int blockNumber = 1; blockNumber <= occupiedBlocks; blockNumber++) {
@@ -286,12 +352,13 @@ class StorageManager {
         System.out.println();
     }
 
-    private void printStatistics(String method, int blockAccessCounter, double averageRating, long duration) {
+    private void printStatistics (String method,int blockAccessCounter, Double averageRating,long duration){
         System.out.println(method + " Method:");
         System.out.println(String.format("No. of Block Access: %d", blockAccessCounter));
-        System.out.println(String.format("Average Rating: %.2f", averageRating));
+        if (averageRating != null) {
+            System.out.println(String.format("Average Rating: %.2f", averageRating));
+        }
         System.out.println(String.format("Running Time (ms): %d", duration));
         System.out.println();
     }
-
 }

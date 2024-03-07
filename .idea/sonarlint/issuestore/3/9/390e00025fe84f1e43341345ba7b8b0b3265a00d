@@ -1,23 +1,27 @@
 
+j
+java:S1192q"HDefine a constant instead of duplicating this literal "B+ Tree" 3 times.(úœ™†ûÿÿÿÿ8úÁŠÌá1
+{
+java:S1192”"XDefine a constant instead of duplicating this literal "Brute-force Linear Scan" 3 times.(İäƒ²úÿÿÿÿ8úÁŠÌá1
 F
-java:S5411”"(Use a primitive boolean expression here.(âº‚é8°ş™Éá1
+java:S5411Ö"(Use a primitive boolean expression here.(âº‚é8ûÁŠÌá1
 7
-java:S1220""Move this file to a named package.8°ş™Éá1
-^	java:S125á"<This block of commented-out lines of code should be removed.(ƒ½–”ùÿÿÿÿ8şş™Éá1
+java:S1220""Move this file to a named package.8ûÁŠÌá1
+^	java:S125£"<This block of commented-out lines of code should be removed.(ƒ½–”ùÿÿÿÿ8‘ÃŠÌá1
 `
-java:S1117ü"=Rename "numRecords" which hides the field declared at line 9.(Ü›İÿşÿÿÿÿ8ÿş™Éá1
+java:S1117¾"=Rename "numRecords" which hides the field declared at line 9.(Ü›İÿşÿÿÿÿ8‘ÃŠÌá1
 ]
-java:S6213€":Rename this variable to not match a restricted identifier.(ĞÉ·¹ıÿÿÿÿ8ñöœÉá1
-M	java:S106“"+Replace this use of System.out by a logger.(›ºî¼úÿÿÿÿ8€ÿ™Éá1
-H	java:S106–"+Replace this use of System.out by a logger.(ñıÄÕ8€ÿ™Éá1
-H	java:S106™"+Replace this use of System.out by a logger.(—ƒ¶Š8€ÿ™Éá1
-M	java:S106š"+Replace this use of System.out by a logger.(½Ù¯İıÿÿÿÿ8òöœÉá1
-M	java:S106›"+Replace this use of System.out by a logger.(¨¥€€úÿÿÿÿ8òöœÉá1
-H	java:S106œ"+Replace this use of System.out by a logger.(ÏÁŠø8òöœÉá1
-M	java:S106"+Replace this use of System.out by a logger.(Ìíƒùÿÿÿÿ8òöœÉá1
-M	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8òöœÉá1
-M	java:S106¢"+Replace this use of System.out by a logger.(ôä©‰üÿÿÿÿ8‚ÊÑÉá1
-M	java:S106£"+Replace this use of System.out by a logger.(çüŸÖşÿÿÿÿ8‚ÊÑÉá1
-G	java:S106¤"+Replace this use of System.out by a logger.(ñËÖ8‚ÊÑÉá1
-M	java:S106¥"+Replace this use of System.out by a logger.(†Ñˆûÿÿÿÿ8‚ÊÑÉá1
-M	java:S106¦"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ƒÊÑÉá1
+java:S6213Â":Rename this variable to not match a restricted identifier.(ĞÉ·¹ıÿÿÿÿ8‘ÃŠÌá1
+M	java:S106Õ"+Replace this use of System.out by a logger.(›ºî¼úÿÿÿÿ8’ÃŠÌá1
+H	java:S106Ø"+Replace this use of System.out by a logger.(ñıÄÕ8’ÃŠÌá1
+H	java:S106Û"+Replace this use of System.out by a logger.(—ƒ¶Š8’ÃŠÌá1
+M	java:S106Ü"+Replace this use of System.out by a logger.(½Ù¯İıÿÿÿÿ8’ÃŠÌá1
+M	java:S106İ"+Replace this use of System.out by a logger.(¨¥€€úÿÿÿÿ8’ÃŠÌá1
+H	java:S106Ş"+Replace this use of System.out by a logger.(ÏÁŠø8’ÃŠÌá1
+M	java:S106ß"+Replace this use of System.out by a logger.(Ìíƒùÿÿÿÿ8’ÃŠÌá1
+M	java:S106à"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8’ÃŠÌá1
+M	java:S106ä"+Replace this use of System.out by a logger.(ôä©‰üÿÿÿÿ8“ÃŠÌá1
+M	java:S106å"+Replace this use of System.out by a logger.(çüŸÖşÿÿÿÿ8“ÃŠÌá1
+G	java:S106ç"+Replace this use of System.out by a logger.(ñËÖ8“ÃŠÌá1
+M	java:S106é"+Replace this use of System.out by a logger.(†Ñˆûÿÿÿÿ8“ÃŠÌá1
+M	java:S106ê"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8“ÃŠÌá1

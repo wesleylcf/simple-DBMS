@@ -36,12 +36,12 @@ d
 java:S2184"BCast one of the operands of this division operation to a "double".(ªô©šúÿÿÿÿ8ı²Ãºá1
 a
 java:S2259"CA "NullPointerException" could be thrown; "after" is nullable here.(àÇŸ›8Œ·Ãºá1
+f
+java:S2259·"CA "NullPointerException" could be thrown; "after" is nullable here.(¾Äê€ıÿÿÿÿ8Œ·Ãºá1
 g
 java:S2259£"DA "NullPointerException" could be thrown; "before" is nullable here.(‰âºÀøÿÿÿÿ8‹·Ãºá1
 a
 java:S2259Á"CA "NullPointerException" could be thrown; "after" is nullable here.(³İ¬‘8‹·Ãºá1
-f
-java:S2259·"CA "NullPointerException" could be thrown; "after" is nullable here.(¾Äê€ıÿÿÿÿ8Œ·Ãºá1
 f
 java:S2259"CA "NullPointerException" could be thrown; "after" is nullable here.(¶şñĞùÿÿÿÿ8‹·Ãºá1
 N
