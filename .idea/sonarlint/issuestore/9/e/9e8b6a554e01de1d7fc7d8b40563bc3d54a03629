@@ -1,0 +1,9 @@
+
+0
+java:S1220""Move this file to a named package.
+\
+java:S6213":Rename this variable to not match a restricted identifier.(Î¬¸Ñøÿÿÿÿ8¸ÿÌŞ1
+\
+java:S6213+":Rename this variable to not match a restricted identifier.(š±ÏÔıÿÿÿÿ8’¸ÿÌŞ1
+m
+java:S3457^"Q%n should be used in place of \n to produce the platform-specific line separator.(àÖÅD8ˆÃ”¹á1

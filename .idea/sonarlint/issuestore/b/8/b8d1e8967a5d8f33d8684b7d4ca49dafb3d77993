@@ -1,0 +1,117 @@
+
+|
+java:S2293™"YReplace the type specification in this constructor call with the diamond operator ("<>").(­©Ïøÿÿÿÿ8ù²Ãºá1
+|
+java:S2293š"YReplace the type specification in this constructor call with the diamond operator ("<>").(û‡ÃÆûÿÿÿÿ8ú²Ãºá1
+q
+java:S1192À"SDefine a constant instead of duplicating this literal "B+Tree.rangeSearch" 3 times.(ê£ë¯8ú²Ãºá1
+r
+java:S1192Á"TDefine a constant instead of duplicating this literal "B+Tree.rangeSearch " 3 times.(ØŞÁ¨8ú²Ãºá1
+t
+java:S1192Ó"QDefine a constant instead of duplicating this literal "B+Tree.keySearch" 4 times.(û‘åŸûÿÿÿÿ8ú²Ãºá1
+{	java:S135Ú"YReduce the total number of break and continue statements in this loop to use at most one.(‡äû®ùÿÿÿÿ8ú²Ãºá1
+{	java:S135ô"YReduce the total number of break and continue statements in this loop to use at most one.(ÖÙšêıÿÿÿÿ8ú²Ãºá1
+{	java:S135½"YReduce the total number of break and continue statements in this loop to use at most one.(‡äû®ùÿÿÿÿ8û²Ãºá1
+{	java:S135×"YReduce the total number of break and continue statements in this loop to use at most one.(„Ú’ïúÿÿÿÿ8û²Ãºá1
+u	java:S127›"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8û²Ãºá1
+R
+java:S1066"/Merge this if statement with the enclosing one.(©É¯¥ÿÿÿÿÿ8û²Ãºá1
+M
+java:S1066"/Merge this if statement with the enclosing one.(—Å­Š8û²Ãºá1
+M
+java:S1066ï"/Merge this if statement with the enclosing one.(—Å­Š8û²Ãºá1
+“
+java:S1319Ê"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¾¥ã²øÿÿÿÿ8û²Ãºá1
+
+java:S1319Î"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(—æ8û²Ãºá1
+“
+java:S1319­"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Æ£ñ‚ûÿÿÿÿ8û²Ãºá1
+“
+java:S1319±"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ëÂèâùÿÿÿÿ8û²Ãºá1
+7
+java:S1220""Move this file to a named package.8ı²Ãºá1
+d
+java:S2184"BCast one of the operands of this division operation to a "double".(ùş“êùÿÿÿÿ8ı²Ãºá1
+d
+java:S2184"BCast one of the operands of this division operation to a "double".(ªô©šúÿÿÿÿ8ı²Ãºá1
+a
+java:S2259"CA "NullPointerException" could be thrown; "after" is nullable here.(àÇŸ›8Œ·Ãºá1
+g
+java:S2259£"DA "NullPointerException" could be thrown; "before" is nullable here.(‰âºÀøÿÿÿÿ8‹·Ãºá1
+a
+java:S2259Á"CA "NullPointerException" could be thrown; "after" is nullable here.(³İ¬‘8‹·Ãºá1
+f
+java:S2259·"CA "NullPointerException" could be thrown; "after" is nullable here.(¾Äê€ıÿÿÿÿ8Œ·Ãºá1
+f
+java:S2259"CA "NullPointerException" could be thrown; "after" is nullable here.(¶şñĞùÿÿÿÿ8‹·Ãºá1
+N
+java:S2185",Remove this unnecessary call to "Math.floor"(ùş“êùÿÿÿÿ8•·Ãºá1
+N
+java:S2185",Remove this unnecessary call to "Math.floor"(ªô©šúÿÿÿÿ8–·Ãºá1
+L	java:S106"+Replace this use of System.out by a logger.(›Ë–şÿÿÿÿ8–·Ãºá1
+Z
+java:S1117"8Rename "root" which hides the field declared at line 13.(˜È†àşÿÿÿÿ8–·Ãºá1
+^
+java:S1854#"<Remove this useless assignment to local variable "leafNode".(ÅÉ·¯ıÿÿÿÿ8—·Ãºá1
+I
+java:S19051"'Remove this unnecessary cast to "Node".(î²Ìäüÿÿÿÿ8˜·Ãºá1
+L
+java:S1197M"*Move the array designators [] to the type.(Ÿ¹ÓÜúÿÿÿÿ8š·Ãºá1
+L
+java:S1197N"*Move the array designators [] to the type.(ÀÎ£Ûøÿÿÿÿ8š·Ãºá1
+H
+java:S1197"*Move the array designators [] to the type.(‡áØ¾8œ·Ãºá1
+M
+java:S1197"*Move the array designators [] to the type.(ˆé…Ôûÿÿÿÿ8œ·Ãºá1
+\
+java:S1155Ê">Use isEmpty() to check whether the collection is empty or not.(˜¸ñÅ8·Ãºá1
+H	java:S106ß"+Replace this use of System.out by a logger.(«¿8·Ãºá1
+p
+java:S3776ä"RRefactor this method to reduce its Cognitive Complexity from 44 to the 15 allowed.(µÌÖ¼8·Ãºá1
+E
+java:S1905í"'Remove this unnecessary cast to "Node".(”Çü‹8 ·Ãºá1
+J
+java:S1905î"'Remove this unnecessary cast to "Node".(‹“Ê”üÿÿÿÿ8 ·Ãºá1
+p
+java:S3776Õ"RRefactor this method to reduce its Cognitive Complexity from 44 to the 15 allowed.(İÆì™8¤·Ãºá1
+E
+java:S1905ğ"'Remove this unnecessary cast to "Node".(ó¶í²8¥·Ãºá1
+J
+java:S1905ñ"'Remove this unnecessary cast to "Node".(Ç³Ñşÿÿÿÿ8¥·Ãºá1
+p
+java:S3776Î"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(—æ8¨·Ãºá1
+M	java:S106Ó"+Replace this use of System.out by a logger.(û‘åŸûÿÿÿÿ8©·Ãºá1
+J
+java:S1905Ù"'Remove this unnecessary cast to "Node".(õá‚©øÿÿÿÿ8ª·Ãºá1
+G	java:S106İ"+Replace this use of System.out by a logger.(‚íO8ª·Ãºá1
+H	java:S106Ş"+Replace this use of System.out by a logger.(ä×úÆ8ª·Ãºá1
+G	java:S106æ"+Replace this use of System.out by a logger.(‚íO8«·Ãºá1
+H	java:S106ç"+Replace this use of System.out by a logger.(ˆ‹Õ8«·Ãºá1
+E
+java:S1905ğ"'Remove this unnecessary cast to "Node".(˜ó·Ú8«·Ãºá1
+M	java:S106"+Replace this use of System.out by a logger.(–ŒÄúüÿÿÿÿ8¬·Ãºá1
+M	java:S106’"+Replace this use of System.out by a logger.(ÿÚÃØúÿÿÿÿ8¬·Ãºá1
+J
+java:S1905›"'Remove this unnecessary cast to "Node".(ú¢»ƒÿÿÿÿÿ8­·Ãºá1
+H	java:S106¨"+Replace this use of System.out by a logger.(øßÃÊ8­·Ãºá1
+M	java:S106©"+Replace this use of System.out by a logger.(î´Ãìşÿÿÿÿ8­·Ãºá1
+M	java:S106ª"+Replace this use of System.out by a logger.(›‚şœøÿÿÿÿ8®·Ãºá1
+u
+java:S3776±"RRefactor this method to reduce its Cognitive Complexity from 39 to the 15 allowed.(ëÂèâùÿÿÿÿ8®·Ãºá1
+H	java:S106¶"+Replace this use of System.out by a logger.(Œµôı8¯·Ãºá1
+J
+java:S1905¼"'Remove this unnecessary cast to "Node".(ª¹Ô‰ÿÿÿÿÿ8¯·Ãºá1
+H	java:S106À"+Replace this use of System.out by a logger.(ê£ë¯8¯·Ãºá1
+H	java:S106Á"+Replace this use of System.out by a logger.(ØŞÁ¨8¯·Ãºá1
+H	java:S106É"+Replace this use of System.out by a logger.(ê£ë¯8°·Ãºá1
+H	java:S106Ê"+Replace this use of System.out by a logger.( Şû¸8°·Ãºá1
+E
+java:S1905Ó"'Remove this unnecessary cast to "Node".(Ò˜•¼8°·Ãºá1
+J
+java:S1905æ"'Remove this unnecessary cast to "Node".(«÷•µüÿÿÿÿ8±·Ãºá1
+M	java:S106ğ"+Replace this use of System.out by a logger.(°Äã¥üÿÿÿÿ8±·Ãºá1
+M	java:S106ô"+Replace this use of System.out by a logger.(Ó…õåøÿÿÿÿ8±·Ãºá1
+ä
+java:S6541Õ"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 71 to 64, Complexity from 22 to 14, Nesting Level from 3 to 2, Number of Variables from 16 to 6.(İÆì™8±·Ãºá1
+é
+java:S6541±"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 65 to 64, Complexity from 19 to 14, Nesting Level from 4 to 2, Number of Variables from 12 to 6.(ëÂèâùÿÿÿÿ8±·Ãºá1

@@ -1,0 +1,57 @@
+
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ş¯‚Ú
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(×éûòûÿÿÿÿ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Û©‡
+o
+java:S2293^"YReplace the type specification in this constructor call with the diamond operator ("<>").(ã‰úÄ
+t
+java:S2293e"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÆÆ ×üÿÿÿÿ
+o
+java:S2293k"YReplace the type specification in this constructor call with the diamond operator ("<>").(»«‡ê
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ş¯‚Ú
+p
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ş¯‚Ú
+u
+java:S2293Á"YReplace the type specification in this constructor call with the diamond operator ("<>").(×Îûÿÿÿÿ
+p
+java:S2293Å"YReplace the type specification in this constructor call with the diamond operator ("<>").(ş¯‚Ú
+n	java:S135$"YReduce the total number of break and continue statements in this loop to use at most one.(‡ª–­
+‡
+java:S1319õ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(–Ûğ‰
+‡
+java:S1319ü"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(óëÆª
+Œ
+java:S1319Š"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ü½Øûÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+{
+java:S4165Ì"dRemove this useless assignment; "isLeaf" already holds the assigned value along all execution paths.(ÇÌ¼©
+€
+java:S4165Ú"dRemove this useless assignment; "isRoot" already holds the assigned value along all execution paths.(å€ñ¼üÿÿÿÿ
+P
+java:S1117B":Rename "isLeaf" which hides the field declared at line 10.(£ƒ®Æ
+<
+java:S1125b"'Remove the unnecessary boolean literal.(‡ù˜
+?	java:S106b"+Replace this use of System.out by a logger.(‡ù˜
+L
+java:S1854}"7Remove this useless assignment to local variable "ind".(±àÓA
+>
+java:S1481w"(Remove this unused "ind" local variable.(”•ì
+A
+java:S1172"*Remove this unused method parameter "ind".(ùåï€
+C
+java:S1172Ë",Remove this unused method parameter "isLea".(¥æ›½
+V
+java:S1854Ú":Remove this useless assignment to local variable "isRoot".(å€ñ¼üÿÿÿÿ
+K
+java:S1656Ú"/Remove or correct this useless self-assignment.(å€ñ¼üÿÿÿÿ
+a
+java:S1155™">Use isEmpty() to check whether the collection is empty or not.(ÅÄ›öùÿÿÿÿ8©‰ş¹á1
+F
+java:S1656Ì"/Remove or correct this useless self-assignment.(ÇÌ¼©
+?
+java:S1068")Remove this unused "label" private field.(¯©·

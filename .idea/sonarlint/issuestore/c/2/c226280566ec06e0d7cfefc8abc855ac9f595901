@@ -1,0 +1,26 @@
+
+t
+java:S1104"YMake LOG_BYTE_SIZE a static final constant or non-public and provide accessors if needed.(«‘Àøøÿÿÿÿ
+N
+java:S1444"3Make this "public static LOG_BYTE_SIZE" field final(«‘Àøøÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+c
+java:S2095["MUse try-with-resources or close this "DataInputStream" in a "finally" clause.(ÔĞå÷
+d
+java:S2095Y"NUse try-with-resources or close this "DataOutputStream" in a "finally" clause.(–ØÜÇ
+o
+java:S2095."MUse try-with-resources or close this "DataInputStream" in a "finally" clause.(Ÿ™›èşÿÿÿÿ8®´»Éá1
+s
+java:S3008"XRename this field "LOG_BYTE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«‘Àøøÿÿÿÿ
+`
+java:S26741"JCheck the return value of the "read" call to see how many bytes were read.(Ö“Ş
+P
+java:S6213E":Rename this variable to not match a restricted identifier.(üÿ¡‰
+@	java:S106N"+Replace this use of System.out by a logger.(²çä…
+e
+java:S2674^"JCheck the return value of the "read" call to see how many bytes were read.(˜¸ìÄúÿÿÿÿ
+e
+java:S1874y"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÖÒ˜Ùùÿÿÿÿ
+H
+java:S1113y"-Do not override the Object.finalize() method.(ÖÒ˜Ùùÿÿÿÿ

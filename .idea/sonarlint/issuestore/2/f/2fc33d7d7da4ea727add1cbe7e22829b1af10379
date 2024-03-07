@@ -1,0 +1,11 @@
+
+p
+java:S1104"ZMake DISK_BYTE_SIZE a static final constant or non-public and provide accessors if needed.(Þ£íú
+J
+java:S1444"4Make this "public static DISK_BYTE_SIZE" field final(Þ£íú
+0
+java:S1220""Move this file to a named package.
+o
+java:S3008"YRename this field "DISK_BYTE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Þ£íú
+V	java:S125
+"<This block of commented-out lines of code should be removed.(×ÿ·Òýÿÿÿÿ

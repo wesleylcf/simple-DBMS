@@ -1,0 +1,18 @@
+
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Âè‘Ò
+0
+java:S1220""Move this file to a named package.
+U
+java:S1118":Add a private constructor to hide the implicit public one.(‘è üÿÿÿÿ
+b
+java:S2677"LUse or store the value returned from "readLine" instead of throwing it away.(²»á®
+P
+java:S6213":Rename this variable to not match a restricted identifier.(©³º 
+E	java:S106"+Replace this use of System.err by a logger.(²ÈÓ…ùÿÿÿÿ
+G
+java:S2116"%Use "Arrays.toString(array)" instead.(²ÈÓ…ùÿÿÿÿ8§ƒª¹á1
+E	java:S106%"+Replace this use of System.out by a logger.(¨áß‰ûÿÿÿÿ
+E	java:S106'"+Replace this use of System.out by a logger.(‹‹Ú÷şÿÿÿÿ
+E	java:S106)"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ
+@	java:S106,"+Replace this use of System.err by a logger.(™“Š

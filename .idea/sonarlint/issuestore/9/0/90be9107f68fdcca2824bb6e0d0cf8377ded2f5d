@@ -1,0 +1,82 @@
+
+w
+java:S2293œ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÍÛÿ8¯‡Ÿ¹á1
+“
+java:S1319™"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Õ÷¨¿ûÿÿÿÿ8±‡Ÿ¹á1
+n	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÊ¬ó8±‡Ÿ¹á1
+E
+java:S1604"(Make this anonymous inner class a lambda(´¿§8³‡Ÿ¹á1
+K
+java:S1604÷"(Make this anonymous inner class a lambda(Å†”úÿÿÿÿ8³‡Ÿ¹á1
+:
+java:S1643Å"Use a StringBuilder instead.(Ü’½„8´‡Ÿ¹á1
+i	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ŒéÚ8µ‡Ÿ¹á1
+0
+java:S1220""Move this file to a named package.
+`
+java:S2184Ô"BCast one of the operands of this division operation to a "double".(”à¤ü8·‡Ÿ¹á1
+`
+java:S2184ä"BCast one of the operands of this division operation to a "double".(”à¤ü8·‡Ÿ¹á1
+_
+java:S2259±"AA "NullPointerException" could be thrown; "bpt" is nullable here.(ß¢æ8—Ÿ¹á1
+_
+java:S2259¿"AA "NullPointerException" could be thrown; "bpt" is nullable here.(¨ŠÁ8—Ÿ¹á1
+d
+java:S2259¶"AA "NullPointerException" could be thrown; "bpt" is nullable here.(µÒ‰ôúÿÿÿÿ8—Ÿ¹á1
+_
+java:S2259Ò"AA "NullPointerException" could be thrown; "bpt" is nullable here.(Óê¸Š8˜Ÿ¹á1
+k
+java:S2095"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(œ„şÖıÿÿÿÿ8˜Ÿ¹á1
+h
+java:S2095š"EUse try-with-resources or close this "Scanner" in a "finally" clause.(‘½Îüÿÿÿÿ8˜Ÿ¹á1
+s
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ãø©Æşÿÿÿÿ8Ÿ¹á1
+l
+java:S62016"JReplace this instanceof check and cast with 'instanceof LeafNode leafnode'(Ï³½øÿÿÿÿ8ĞŸ¹á1
+l
+java:S6201K"JReplace this instanceof check and cast with 'instanceof LeafNode leafnode'(Ç“œèıÿÿÿÿ8ÓŸ¹á1
+t
+java:S3776p"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(÷¡ÛÍûÿÿÿÿ8ÖŸ¹á1
+Y
+java:S1854…";Remove this useless assignment to local variable "sibling".(Õø8ÖŸ¹á1
+o
+java:S6201y"RReplace this instanceof check and cast with 'instanceof InternalNode internalnode'(Ü”îê8ØŸ¹á1
+F	java:S108œ")Either remove or fill this block of code.(¶ˆª8ÛŸ¹á1
+Z
+java:S1854î"<Remove this useless assignment to local variable "pointers".(á¼Éó8çŸ¹á1
+u
+java:S3776“"RRefactor this method to reduce its Cognitive Complexity from 49 to the 15 allowed.(àç©øÿÿÿÿ8óŸ¹á1
+M	java:S106˜"+Replace this use of System.err by a logger.(åÀ¢ôÿÿÿÿÿ8ôŸ¹á1
+M	java:S106¥"+Replace this use of System.err by a logger.(½Ë‡şÿÿÿÿ8öŸ¹á1
+K
+java:S1940Â"(Use the opposite operator ("<") instead.(é±Ùúÿÿÿÿ8øŸ¹á1
+G
+java:S1940Õ")Use the opposite operator (">=") instead.(¬¶•³8ùŸ¹á1
+p
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(¼«ÕÍ8üŸ¹á1
+H
+java:S1197£"*Move the array designators [] to the type.(€é8…Ÿ¹á1
+I
+java:S2185Ô"+Remove this unnecessary call to "Math.ceil"(”à¤ü8Ÿ¹á1
+I
+java:S2185ä"+Remove this unnecessary call to "Math.ceil"(”à¤ü8Ÿ¹á1
+w
+java:S1210…"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(–‡¼Î8‘Ÿ¹á1
+p
+java:S3776Œ"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(Çµí‘8”Ÿ¹á1
+H	java:S106"+Replace this use of System.err by a logger.(¥®Î°8–Ÿ¹á1
+i
+java:S2147ì"FCombine this catch with the one at line 1130, which has the same body.(¥¨›ıÿÿÿÿ8—Ÿ¹á1
+d
+java:S2147î"FCombine this catch with the one at line 1132, which has the same body.(ï­£Ä8˜Ÿ¹á1
+D
+java:S1075™"&Remove this hard-coded path-delimiter.(²ƒõÏ8›Ÿ¹á1
+\
+java:S1155Ä">Use isEmpty() to check whether the collection is empty or not.(¼“¶º8£Ÿ¹á1
+M	java:S106ë"+Replace this use of System.err by a logger.(Şàš¬øÿÿÿÿ8¦Ÿ¹á1
+M	java:S106í"+Replace this use of System.err by a logger.(Şàš¬øÿÿÿÿ8¦Ÿ¹á1
+M	java:S106ï"+Replace this use of System.err by a logger.(Şàš¬øÿÿÿÿ8¦Ÿ¹á1
+D
+java:S3398Í"!Move this method into "LeafNode".(ÏÆüùÿÿÿÿ8§Ÿ¹á1
+é
+java:S6541“"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 72 to 64, Complexity from 24 to 14, Nesting Level from 5 to 2, Number of Variables from 11 to 6.(àç©øÿÿÿÿ8áŸ¹á1
