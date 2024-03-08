@@ -84,34 +84,28 @@ class StorageManager {
 
         ArrayList<Address> addresses = bPlusTree.getRecordsWithKey(numVotes);
         HashSet<Integer> accessedBlocks = new HashSet<>();
-        int blockAccessCounter = 0;
         double averageRatingSum = 0;
-        int recordCounter = 0;
 
         for (Address address : addresses) {
             // Use the block ID directly from the address
             int blockId = address.returnId();
-            // Check if the block has been accessed before
-            if (accessedBlocks.add(blockId)) {
-                blockAccessCounter++;
-            }
+
+            // Add newly accessed block to the set
+            accessedBlocks.add(blockId);
 
             // Retrieve the block and the specific record within the block
             Block block = disk.getBlock(blockId);
             Record recordObtained = block.getRecordAt(address.getOffset());
 
-            if (!recordObtained.isTombstone()) {
-                averageRatingSum += recordObtained.getAverageRating();
-                recordCounter++;
-            }
+            averageRatingSum += recordObtained.getAverageRating();
         }
 
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
-        double averageRating = recordCounter > 0 ? averageRatingSum / recordCounter : 0;
+        double averageRating = !addresses.isEmpty() ? averageRatingSum / addresses.size() : 0;
 
-        printStatistics("B+ Tree", blockAccessCounter, averageRating, duration);
+        printStatistics("B+ Tree", accessedBlocks.size(), averageRating, duration);
     }
 
     /**
@@ -123,15 +117,13 @@ class StorageManager {
         long startTime = System.currentTimeMillis();
 
         HashSet<Integer> accessedBlocks = new HashSet<>();
-        int blockAccessCounter = 0;
         double averageRatingSum = 0;
         int recordCounter = 0;
 
         for (int blockId = 1; blockId <= occupiedBlocks; blockId++) {
             Block block = disk.getBlock(blockId);
-            if (accessedBlocks.add(blockId)) {
-                blockAccessCounter++;
-            }
+            accessedBlocks.add(blockId);
+
             for (int recordIndex = 0; recordIndex < block.getRecordCount(); recordIndex++) {
                 Record recordObtained = block.getRecordAt(recordIndex);
                 if (!recordObtained.isTombstone() && recordObtained.getNumVotes() == numVotes) {
@@ -146,7 +138,7 @@ class StorageManager {
 
         double averageRating = recordCounter > 0 ? averageRatingSum / recordCounter : 0;
 
-        printStatistics("Brute-force Linear Scan", blockAccessCounter, averageRating, duration);
+        printStatistics("Brute-force Linear Scan", accessedBlocks.size(), averageRating, duration);
     }
 
     /**
@@ -160,34 +152,28 @@ class StorageManager {
 
         ArrayList<Address> addresses = bPlusTree.getRecordsWithKeyInRange(min, max);
         HashSet<Integer> accessedBlocks = new HashSet<>();
-        int blockAccessCounter = 0;
         double averageRatingSum = 0;
-        int recordCounter = 0;
 
         for (Address address : addresses) {
             // Use the block ID directly from the address
             int blockId = address.returnId();
-            // Check if the block has been accessed before
-            if (accessedBlocks.add(blockId)) {
-                blockAccessCounter++;
-            }
+
+            // Add newly accessed block to the set
+            accessedBlocks.add(blockId);
 
             // Retrieve the block and the specific record within the block
             Block block = disk.getBlock(blockId);
             Record recordObtained = block.getRecordAt(address.getOffset());
 
-            if (!recordObtained.isTombstone()) {
-                averageRatingSum += recordObtained.getAverageRating();
-                recordCounter++;
-            }
+            averageRatingSum += recordObtained.getAverageRating();
         }
 
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
-        double averageRating = recordCounter > 0 ? averageRatingSum / recordCounter : 0;
+        double averageRating = !addresses.isEmpty() ? averageRatingSum / addresses.size() : 0;
 
-        printStatistics("B+ Tree", blockAccessCounter, averageRating, duration);
+        printStatistics("B+ Tree", accessedBlocks.size(), averageRating, duration);
     }
 
     /**
@@ -200,15 +186,12 @@ class StorageManager {
         long startTime = System.currentTimeMillis();
 
         HashSet<Integer> accessedBlocks = new HashSet<>();
-        int blockAccessCounter = 0;
         double averageRatingSum = 0;
         int recordCounter = 0;
 
         for (int blockId = 1; blockId <= occupiedBlocks; blockId++) {
             Block block = disk.getBlock(blockId);
-            if (accessedBlocks.add(blockId)) {
-                blockAccessCounter++;
-            }
+            accessedBlocks.add(blockId);
 
             for (int recordIndex = 0; recordIndex < block.getRecordCount(); recordIndex++) {
                 Record recordObtained = block.getRecordAt(recordIndex);
@@ -224,7 +207,7 @@ class StorageManager {
 
         double averageRating = recordCounter > 0 ? averageRatingSum / recordCounter : 0;
 
-        printStatistics("Brute-force Linear Scan", blockAccessCounter, averageRating, duration);
+        printStatistics("Brute-force Linear Scan", accessedBlocks.size(), averageRating, duration);
     }
 
     /**
@@ -236,14 +219,11 @@ class StorageManager {
         long startTime = System.currentTimeMillis();
 
         ArrayList<Address> addresses = bPlusTree.getRecordsWithKey(numVotes);
-        int blockAccessCounter = 0;
         HashSet<Integer> accessedBlocks = new HashSet<>();
 
         for (Address address : addresses) {
             int blockId = address.returnId();
-            if (accessedBlocks.add(blockId)) {
-                blockAccessCounter++;
-            }
+            accessedBlocks.add(blockId);
 
             Block block = disk.getBlock(blockId);
             Record recordToDelete = block.getRecordAt(address.getOffset());
@@ -255,7 +235,7 @@ class StorageManager {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
-        printStatistics("B+ Tree", blockAccessCounter, null, duration);
+        printStatistics("B+ Tree", accessedBlocks.size(), null, duration);
     }
 
     /**
@@ -266,14 +246,11 @@ class StorageManager {
      */
     public void linearScanDeleteByNumVotes(int numVotes) {
         long startTime = System.currentTimeMillis();
-        int blockAccessCounter = 0;
         HashSet<Integer> accessedBlocks = new HashSet<>();
 
         for (int blockId = 1; blockId <= occupiedBlocks; blockId++) {
             Block block = disk.getBlock(blockId);
-            if (accessedBlocks.add(blockId)) {
-                blockAccessCounter++;
-            }
+            accessedBlocks.add(blockId);
 
             for (int recordIndex = 0; recordIndex < block.getRecordCount(); recordIndex++) {
                 Record recordToDelete = block.getRecordAt(recordIndex);
@@ -286,7 +263,7 @@ class StorageManager {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
-        printStatistics("Brute-force Linear Scan", blockAccessCounter, null, duration);
+        printStatistics("Brute-force Linear Scan", accessedBlocks.size(), null, duration);
     }
 
 //    public void updateRecordByPrimaryKey() {

@@ -1,10 +1,12 @@
 
 7
-java:S1220""Move this file to a named package.8¨¡Ëá1
-]	java:S125"<This block of commented-out lines of code should be removed.(è‡êÿÿÿÿÿ8­¡Ëá1
-L	java:S106"+Replace this use of System.out by a logger.(·Í‰ôùÿÿÿÿ8­¡Ëá1
-L	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8®¡Ëá1
-L	java:S106"+Replace this use of System.out by a logger.(Œü„»ıÿÿÿÿ8®¡Ëá1
-L	java:S106!"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8®¡Ëá1
-L	java:S106$"+Replace this use of System.out by a logger.(³„‹øùÿÿÿÿ8úÜËá1
-L	java:S106'"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8úÜËá1
+java:S1220""Move this file to a named package.8¦à“ğá1
+
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Şıÿÿÿÿ8©¶´ôá1
+]	java:S125"<This block of commented-out lines of code should be removed.(è‡êÿÿÿÿÿ8­à“ğá1
+L	java:S106"+Replace this use of System.out by a logger.(·Í‰ôùÿÿÿÿ8®à“ğá1
+L	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8®à“ğá1
+L	java:S106"+Replace this use of System.out by a logger.(Œü„»ıÿÿÿÿ8®à“ğá1
+L	java:S106!"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8¯à“ğá1
+L	java:S106$"+Replace this use of System.out by a logger.(³„‹øùÿÿÿÿ8²Àôá1
+L	java:S106'"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8³Àôá1
