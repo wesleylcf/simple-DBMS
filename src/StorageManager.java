@@ -334,7 +334,7 @@ class StorageManager {
         System.out.println(method + " Method:");
         System.out.println(String.format("No. of Block Access: %d", blockAccessCounter));
         if (averageRating != null) {
-            System.out.println(String.format("Average Rating: %.2f", averageRating));
+            System.out.println(String.format("Average Rating: %.3f", averageRating));
         }
         System.out.println(String.format("Running Time (ms): %d", duration));
         System.out.println();
