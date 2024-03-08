@@ -28,14 +28,10 @@ public class BPlusTree {
         root.setRoot(true);
         height = 1;
         nodeCount = 1;
-        recordCount = 0;
         return root;
     }
 
     public void insert(int key, Address address) {
-        recordCount++;
-        System.err.println("number of nodes: " + key + "  " + recordCount);
-        //System.out.println("insert"+key);
         Node leafNode = new Node(false, true);
         leafNode = this.searchLeaf(key);
 
@@ -80,11 +76,10 @@ public class BPlusTree {
 
     public void splitLeaf(Node originalNode, int key, Address address) {
 
-        System.out.println("spiltting tree");
+        //System.out.println("spiltting tree");
         int keys[] = new int[maxKeys + 1];
         Address addresses[] = new Address[maxKeys + 1];
         Node newLeaf = new Node(false, true);
-        System.out.println("leaf node: "+newLeaf.returnLeaf());
         
         //newLeaf.setLeaf(true);
         int i;
@@ -137,15 +132,18 @@ public class BPlusTree {
             height++;
         } else if (originalNode.returnParent().returnKeys().size() < maxKeys)
             originalNode.returnParent().appendChild(newLeaf);
-        else
+        else {
             splitParent(originalNode.returnParent(), newLeaf);
-
+        }
         // updating nodeCount
         nodeCount++;
     }
 
     public void splitParent(Node parentNode, Node childNode) {
         Node children[] = new Node[maxKeys + 2];
+        for (int i=0; i<(maxKeys+2); i++) {
+            children[i] = new Node(false, false);
+        }
         int keys[] = new int[maxKeys + 2];
         int key = childNode.returnSmallest();
         Node newParentNode = new Node(true, false);
@@ -178,7 +176,7 @@ public class BPlusTree {
             parentNode.appendChild(children[i]);
 
         for (int i = parentMinKeys + 2; i < maxKeys + 2; i++)
-            parentNode.appendChild(children[i]);
+            newParentNode.appendChild(children[i]);
 
         //setting parent for the new parentnode
         if (parentNode.returnRoot()) {
@@ -188,7 +186,7 @@ public class BPlusTree {
             newRoot.setRoot(true);
             newRoot.appendChild(parentNode);
             newRoot.appendChild(newParentNode);
-            root = newRoot;
+            this.root = newRoot;
             height++;
         } else if (parentNode.returnParent().returnKeys().size() < maxKeys)
             parentNode.returnParent().appendChild(newParentNode);
