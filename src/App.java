@@ -28,8 +28,8 @@ public class App {
         
         // Experiment 4
         System.out.println("Experiment 4: Retrieving records by number of votes range");
-        storageManager.retrieveRecordsByNumVotesRange(30000, 4000); // B+ tree method
-        storageManager.linearScanByNumVotesRange(30000, 4000); // Linear scan method
+        storageManager.retrieveRecordsByNumVotesRange(30000, 40000); // B+ tree method
+        storageManager.linearScanByNumVotesRange(30000, 40000); // Linear scan method
         System.out.println();
 
         // Experiment 5

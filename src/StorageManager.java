@@ -47,7 +47,7 @@ class StorageManager {
                 disk.writeBlock(occupiedBlocks, block);
                 blockNumber = occupiedBlocks;
             } else {
-                recordOffsetInBlock = block.getRecordCount() - 1;
+                recordOffsetInBlock = block.getRecordCount();
                 blockNumber = occupiedBlocks;
                 block.insertRecord(r);
                 disk.writeBlock(occupiedBlocks, block);
@@ -70,6 +70,7 @@ class StorageManager {
         recovery.logOperation(CrashRecovery.OPERATION.DELETE, r);
         Record recordTombstone = new Record(r.getUuid(), r.getAverageRating(), r.getNumVotes(), (short) 1);
         insertRecord(recordTombstone);
+        bPlusTree.deleteKey(r.getNumVotes());
         this.checkAndRunCompaction();
     }
 
@@ -280,12 +281,12 @@ class StorageManager {
                     deleteRecord(recordToDelete);
                 }
             }
-
-            long endTime = System.currentTimeMillis();
-            long duration = endTime - startTime;
-
-            printStatistics("Brute-force Linear Scan", blockAccessCounter, null, duration);
         }
+
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+
+        printStatistics("Brute-force Linear Scan", blockAccessCounter, null, duration);
     }
 
 //    public void updateRecordByPrimaryKey() {
