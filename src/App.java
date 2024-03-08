@@ -4,7 +4,7 @@ public class App {
         Disk disk = new Disk(Block.BLOCK_BYTE_SIZE);
 
         // Initialize default B tree using uuid(primary key)
-        BPlusTree bPlusTree = new BPlusTree(200);
+        BPlusTree bPlusTree = new BPlusTree(200);        
 
         // Init storage related components
         WriteAheadLog writeAheadLog = new WriteAheadLog(System.getProperty("user.dir") + "/recovery.log");

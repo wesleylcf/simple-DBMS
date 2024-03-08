@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Node {
-    
     private ArrayList<Integer> keys;
     private ArrayList<Node> children;
     private ArrayList<Address> records;
@@ -10,9 +9,6 @@ public class Node {
     private boolean isLeaf;
     private boolean isRoot;
     private boolean isParent;
-
-
-    private String label;
 
     public Node(boolean isParent, boolean isLeaf) {
         this.keys = new ArrayList<Integer>();
@@ -200,7 +196,7 @@ public class Node {
      * Setter for isLeaf
      field
      */
-    public void setLeaf(boolean isLea) {
+    public void setLeaf(boolean isLeaf) {
         this.isLeaf = isLeaf;
     }
 
@@ -215,7 +211,7 @@ public class Node {
      * Setter for isRoot field
      */
     public void setRoot(boolean isRoot) {
-        isRoot = isRoot;
+        this.isRoot = isRoot;
     }
 
     /**

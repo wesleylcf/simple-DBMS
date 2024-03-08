@@ -10,6 +10,7 @@ public class BPlusTree {
     int height;
     int nodeCount;
     int deletedCount;
+    int recordCount;
     Node root;
 
     public BPlusTree(int blockSize) {
@@ -23,22 +24,24 @@ public class BPlusTree {
     }
 
     public Node createTree() {
-        Node root = new Node(false, false);
+        Node root = new Node(false, true);
         root.setRoot(true);
         height = 1;
         nodeCount = 1;
+        recordCount = 0;
         return root;
     }
 
     public void insert(int key, Address address) {
-
+        recordCount++;
+        System.err.println("number of nodes: " + key + "  " + recordCount);
+        //System.out.println("insert"+key);
         Node leafNode = new Node(false, true);
         leafNode = this.searchLeaf(key);
 
-        if (leafNode.returnKeys().size() < maxKeys) leafNode.addRecord(key, address);
-
-        else {
-
+        if (leafNode.returnKeys().size() < maxKeys){
+            leafNode.addRecord(key, address);
+        } else {
             splitLeaf(leafNode, key, address);
         }
 
@@ -46,9 +49,11 @@ public class BPlusTree {
 
     // search for the correct leaf for record insertion
     public Node searchLeaf(int key) {
-        if (this.root.returnLeaf()) return (Node) root;
+        //System.out.println("leaf:" + this.root.returnLeaf());
+        if (this.root.returnLeaf())
+            return (Node) root;
 
-        Node parentNode = new Node(true, false);
+        Node parentNode = (Node) root;
         ArrayList<Integer> keys;
 
         // finding correct first level parent
@@ -74,14 +79,18 @@ public class BPlusTree {
     }
 
     public void splitLeaf(Node originalNode, int key, Address address) {
+
+        System.out.println("spiltting tree");
         int keys[] = new int[maxKeys + 1];
         Address addresses[] = new Address[maxKeys + 1];
         Node newLeaf = new Node(false, true);
+        System.out.println("leaf node: "+newLeaf.returnLeaf());
+        
+        //newLeaf.setLeaf(true);
         int i;
 
         // getting full and sorted lists of keys and addresses
         for (i = 0; i < maxKeys; i++) {
-
             keys[i] = originalNode.returnKey(i);
             addresses[i] = originalNode.returnRecord(i);
         }
@@ -136,8 +145,6 @@ public class BPlusTree {
     }
 
     public void splitParent(Node parentNode, Node childNode) {
-
-
         Node children[] = new Node[maxKeys + 2];
         int keys[] = new int[maxKeys + 2];
         int key = childNode.returnSmallest();
