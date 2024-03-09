@@ -308,22 +308,37 @@ public class Node {
         this.next = node;
     }
 
+    /**
+     * Delete a record at a specified index
+     */
     public void deleteRecord(int index) {
+        // Delete the record using the index
         deleteKey(index);
+        // Remove the record from the records list
         records.remove(index);
     }
 
+    /**
+     * Deletes all records from the node.
+     */
     public void deleteRecords() {
+        // Reset the records list
         this.records = new ArrayList<Address>();
     }
 
+    /**
+     * Deletes all keys from the node.
+     */
     public void deleteKeys() {
+        // Reset the keys list
         this.keys = new ArrayList<Integer>();
     }
 
+    /**
+     * Deletes a key at a specified index
+     */
     public void deleteKey(int index) {
+        // Delete the key using the index
         keys.remove(index);
     }
-
-
 }

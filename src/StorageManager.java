@@ -328,6 +328,8 @@ class StorageManager {
         System.out.println(String.format("Current number of occupied blocks: %d", occupiedBlocks));
         System.out.println(String.format("Disk utilization: %f %%", getDiskUtilization() * 100));
         System.out.println();
+        this.bPlusTree.bPlusTreeStats();
+        System.out.println();
     }
 
     private void printStatistics (String method,int blockAccessCounter, Double averageRating,long duration){
