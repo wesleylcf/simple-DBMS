@@ -234,7 +234,8 @@ class StorageManager {
 
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-
+        System.out.println("Number of nodes deleted = "+this.bPlusTree.deletedCount);
+        this.bPlusTree.bPlusTreeStats();
         printStatistics("B+ Tree", accessedBlocks.size(), null, duration);
     }
 
