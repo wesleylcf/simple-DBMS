@@ -1,6 +1,6 @@
 import java.nio.ByteBuffer;
 
-class Disk {
+public class Disk {
   public static int DISK_BYTE_SIZE = 500 * (int) Math.pow(2, 20);
   private int blockSizeInBytes;
   private ByteBuffer bytes;

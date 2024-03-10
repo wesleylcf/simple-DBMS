@@ -5,7 +5,7 @@ import java.util.HashSet;
  * Blocks are logical units representing a particular slice of the Disk
  * This class is to encapsulate the logic for interactions between Disk and Block
  */
-class StorageManager {
+public class StorageManager {
     private Integer numRecords = 0;
     private int occupiedBlocks = 0;
     Disk disk;
