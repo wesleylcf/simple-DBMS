@@ -1,6 +1,15 @@
 # DBMS Design
   Note: Given the project requirements has to do with only the Storage and Indexing parts of a DBMS, the design uses a simplified design that tries to inherit some of the best practices that are used in practice for actual RDBMS, and may not handle some of the other requirements of DBMS like concurrency control, transaction isolation, and crash recovery.
 
+  ## Installation Guide
+  1. <b>Download the Project:</b> Begin by downloading our project submission from NTULearn. Once downloaded, unzip the project folder to a location of your choice on your computer.
+  2. <b>Open the Project in an IDE:</b> Launch your preferred Integrated Development Environment (IDE) such as Eclipse or Visual Studio Code. Navigate to the unzipped project folder and open it within your IDE.
+  3. <b>Download Movie Data:</b> Download the movie data file named data.tsv from the provided source. Locate the src folder within the project directory. Move the downloaded data.tsv file into this src folder
+  4. <b>Navigate to Source Folder:</b> If you prefer to use the terminal for compilation and execution, open a terminal window. Navigate to the src folder within the project directory using the cd command, <code>cd DBMS/src</code>
+  5. <b>Compile the Project:</b> In the terminal, compile the project by running <code>javac App.java</code>. 
+  6. <b>Run the Project:</b> Once the project is successfully compiled, execute the program by running <code> java App</code> command in the terminal. 
+
+
   ## Specifications
   ### Disk
   - Disk is just a byte[] of 500MB. However we can think of it as having many Blocks

@@ -26,7 +26,6 @@ public class BPlusTree {
         nodeCount = 0;
         deletedCount = 0;
         
-        // Print initialization information
         System.out.println("B+ tree initialized with maxKeys = " + maxKeys + ", minKeysParentNode = " + minKeysParentNode + ", minKeysLeafNode = " + minKeysLeafNode);
     }
 
