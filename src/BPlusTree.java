@@ -66,7 +66,6 @@ public class BPlusTree {
             // If the leaf node is full, split it
             splitLeaf(leafNode, key, address);
         }
-
     }
 
     /**
@@ -242,12 +241,11 @@ public class BPlusTree {
      * @param key The key of the records to be deleted.
      */
     public void deleteKey(int key) {
-        // Initialize variables
         ArrayList<Integer> keys;
-        Node leaf;
+        Node leaf = new Node(false, true);
 
         // Loop until all records with the given key value are deleted
-        while (getRecordsWithKey(key).size() != 0) {
+        while (getRecordsWithKey(key).size() > 0) {
             // Search for the leaf node containing the key
             leaf = searchLeaf(key);
             keys = leaf.returnKeys();
@@ -257,16 +255,14 @@ public class BPlusTree {
                 if (keys.get(i) == key) {
                     leaf.deleteRecord(i);
 
-                    // If the leaf node is not the root, update the tree
+                    // If the node is not the root, update the tree
                     if (!leaf.returnRoot())
                         resetLeaf(leaf);
-
-                    // Exit loop after deleting the record
                     break;
                 }
             }
         }
-        // Print deletion information and update node count
+        // Update node count
         System.out.println("Deletion: number of nodes deleted = " + deletedCount);
         nodeCount -= deletedCount;
         bPlusTreeStats(); // Update B+ tree statistics
@@ -281,87 +277,91 @@ public class BPlusTree {
     public void resetLeaf(Node node) {
         // If the node already has enough keys, reset its parent and finish
         if (node.returnKeys().size() >= minKeysLeafNode) {
+            System.out.println("case 1 enough keys");
             resetParent(node.returnParent());
             return;
         }
 
         // Get the neighboring nodes
-        Node before = (Node) node.returnParent().returnChildBefore(node);
-        Node after = (Node) node.returnParent().returnChildAfter(node);
+        Node left = new Node(true, false);
+        Node right = new Node(true, false);
+        left = (Node) node.returnParent().returnChildBefore(node);
+        right = (Node) node.returnParent().returnChildAfter(node);
+
         int needed = minKeysLeafNode - node.returnKeys().size(); // Number of keys needed to fill the node
-        int bSpare = 0; // Number of keys the before node can spare
-        int aSpare = 0; // Number of keys the after node can spare
-        Node copy; // Copy of the parent node for updating
+        int leftSpare = 0; // Number of keys the before node can spare
+        int rightSpare = 0; // Number of keys the after node can spare
+        Node copyParent = new Node(true, false); // Copy of the parent node for updating
 
         // Calculate the number of keys that the before and after nodes can spare
-        if (before != null)
-            bSpare += before.returnKeys().size() - minKeysLeafNode;
+        if (left != null)
+            leftSpare += left.returnKeys().size() - minKeysLeafNode;
 
-        if (after != null)
-            aSpare += after.returnKeys().size() - minKeysLeafNode;
+        if (right != null)
+            rightSpare += right.returnKeys().size() - minKeysLeafNode;
 
         // If merging is necessary
-        if (needed > aSpare + bSpare) {
+        if (needed > rightSpare + leftSpare) {
             // Merge keys into the before and after nodes
-            if (before != null && after != null) {
+            if (left != null && right != null) {
                 // Fill the before node with keys from the current node
-                for (int i = 0; i < maxKeys - (bSpare + minKeysLeafNode); i++)
-                    before.addRecord(node.returnKey(i), node.returnRecord(i));
-
+                for (int i = 0; i < maxKeys - (leftSpare + minKeysLeafNode); i++)
+                    if (i<node.returnKeys().size())
+                        left.addRecord(node.returnKey(i), node.returnRecord(i));
                 // Fill the rest into the after node
-                for (int i = maxKeys - (bSpare + minKeysLeafNode); i < node.returnKeys().size(); i++)
-                    after.addRecord(node.returnKey(i), node.returnRecord(i));
-            } else if (before == null) {
+                for (int i = maxKeys - (leftSpare + minKeysLeafNode); i < node.returnKeys().size(); i++)
+                    right.addRecord(node.returnKey(i), node.returnRecord(i));
+            } else if (left == null) {
                 // Add keys to the after node if the current node has no before node
                 for (int i = 0; i < node.returnKeys().size(); i++)
-                    after.addRecord(node.returnKey(i), node.returnRecord(i));
+                    right.addRecord(node.returnKey(i), node.returnRecord(i));
             } else {
                 // Add keys to the before node if the current node has no after node
                 for (int i = 0; i < node.returnKeys().size(); i++)
-                    before.addRecord(node.returnKey(i), node.returnRecord(i));
+                    left.addRecord(node.returnKey(i), node.returnRecord(i));
             }
             // Copy the parent node for resetting after deleting the leaf node
-            copy = node.returnParent();
+            copyParent = node.returnParent();
             // Adjust the before node if it's from a different parent
-            if (before == null) {
-                if (!copy.returnRoot())
-                    before = searchLeaf(copy.returnSmallest() - 1);
+            if (left == null) {
+                if (!copyParent.returnRoot())
+                    left = searchLeaf(copyParent.returnSmallest() - 1);
             }
             // Redirect the before node to the after node
-            before.setNext(node.returnNext());
+            left.setNext(node.returnNext());
             // Delete the current node
             node.removeNode();
             deletedCount++;
         } else { // If borrowing keys is possible
-            if (before != null && after != null) {
+            if (left != null && right != null) {
                 // Borrow keys from the before node and the after node
-                for (int i = 0; i < bSpare; i++) {
-                    node.addRecord(before.returnKey(before.returnKeys().size() - 1 - i),
-                            before.returnRecord(before.returnKeys().size() - 1 - i));
-                    before.deleteRecord(before.returnKeys().size() - 1 - i);
+                for (int i = 0; i < leftSpare; i++) {
+                    node.addRecord(left.returnKey(left.returnKeys().size() - 1 - i),left.returnRecord(left.returnKeys().size() - 1 - i));
+                    left.deleteRecord(left.returnKeys().size() - 1 - i);
                 }
-                for (int i = bSpare, j = 0; i < needed; i++, j++) {
-                    node.addRecord(after.returnKey(j), after.returnRecord(j));
-                    after.deleteRecord(j);
+                for (int i = leftSpare, j = 0; i < needed; i++, j++) {
+                    node.addRecord(right.returnKey(j), right.returnRecord(j));
+                    right.deleteRecord(j);
                 }
-            } else if (before == null) {
+            } else if (left == null) {
                 // Borrow all keys from the after node if there's no before node
                 for (int i = 0; i < needed; i++) {
-                    node.addRecord(after.returnKey(i), after.returnRecord(i));
-                    after.deleteRecord(i);
+                    node.addRecord(right.returnKey(i), right.returnRecord(i));
+                    right.deleteRecord(i);
                 }
             } else {
                 // Borrow all keys from the before node if there's no after node
                 for (int i = 0; i < needed; i++) {
-                    node.addRecord(before.returnKey(before.returnKeys().size() - 1 - i),
-                            before.returnRecord(before.returnKeys().size() - 1 - i));
-                    before.deleteRecord(before.returnKeys().size() - 1 - i);
+                    node.addRecord(left.returnKey(left.returnKeys().size() - 1 - i),
+                            left.returnRecord(left.returnKeys().size() - 1 - i));
+                    left.deleteRecord(left.returnKeys().size() - 1 - i);
                 }
             }
-            copy = node.returnParent();
+            copyParent = node.returnParent();
         }
         // Update the parents after resetting
-        resetParent(copy);
+        System.out.println("final case");
+        resetParent(copyParent);
     }
 
     /**
@@ -376,7 +376,8 @@ public class BPlusTree {
             // If the root has at least two children, simply reorganize them and return
             if (parent.returnChildren().size() > 1) {
                 // Move the first child to the end
-                Node child = parent.returnChild(0);
+                Node child = new Node(false, true);
+                child = parent.returnChild(0);
                 parent.removeChild(child);
                 parent.appendChild(child);
                 return;
@@ -392,41 +393,43 @@ public class BPlusTree {
             }
         }
 
-        Node before = (Node) parent.returnParent().returnChildBefore(parent);
-        Node after = (Node) parent.returnParent().returnChildAfter(parent);
+        Node left = new Node(true, false);
+        Node right = new Node(true, false);
+        left = (Node) parent.returnParent().returnChildBefore(parent);
+        right = (Node) parent.returnParent().returnChildAfter(parent);
+
         int needed = minKeysParentNode - parent.returnKeys().size();
         int bSpare = 0;
         int aSpare = 0;
-        Node copy;
+        Node copy = new Node(true, false);
 
-        if (before != null)
-            bSpare += before.returnKeys().size() - minKeysParentNode;
+        if (left != null)
+            bSpare += left.returnKeys().size() - minKeysParentNode;
 
-        if (after != null)
-            aSpare += after.returnKeys().size() - minKeysParentNode;
+        if (right != null)
+            aSpare += right.returnKeys().size() - minKeysParentNode;
 
         // If merging is necessary
         if (needed > aSpare + bSpare) {
             // Merge keys into the before and after nodes
-            if (before != null && after != null) {
+            if (left != null && right != null) {
                 // Transfer as many records as possible to the before node
-                for (int i = 0; i < maxKeys - (bSpare + minKeysParentNode) + 1
-                        && i < parent.returnChildren().size(); i++)
-                    before.appendChild(parent.returnChild(i));
+                for (int i = 0; i < maxKeys - (bSpare + minKeysParentNode) + 1 && i < parent.returnChildren().size(); i++)
+                    left.appendChild(parent.returnChild(i));
 
                 // Transfer the remaining records to the after node
                 for (int i = maxKeys - (bSpare + minKeysParentNode) + 1; i < parent.returnChildren().size(); i++)
-                    after.appendChild(parent.returnChild(i));
+                    right.appendChild(parent.returnChild(i));
             }
             // If only the after node is available
-            else if (before == null) {
+            else if (left == null) {
                 for (int i = 0; i < parent.returnChildren().size(); i++)
-                    after.appendChild(parent.returnChild(i));
+                    right.appendChild(parent.returnChild(i));
             }
             // If only the before node is available
             else {
                 for (int i = 0; i < parent.returnChildren().size(); i++)
-                    before.appendChild(parent.returnChild(i));
+                    left.appendChild(parent.returnChild(i));
             }
             // Delete the parent node after merging
             copy = parent.returnParent();
@@ -435,28 +438,32 @@ public class BPlusTree {
         }
         // If borrowing keys is possible
         else {
-            if (before != null && after != null) {
+            if (left != null && right != null) {
                 // Take keys from the end of the before node that can be spared
                 for (int i = 0; i < bSpare && i < needed; i++) {
-                    parent.appendChild(before.returnChild(before.returnChildren().size() - 1 - i), 0);
-                    before.removeChild(before.returnChild(before.returnChildren().size() - 1 - i));
+                    Node removed = new Node (true, false);
+                    removed = left.returnChild(left.returnChildren().size() - 1);
+                    parent.appendChild(removed, 0);
+                    System.out.println("before children "+left.returnChildren().size());
+                    System.out.println("before child going to removed"+ removed);
+                    left.removeChild(removed);
                 }
                 // Take the remaining keys from the beginning of the after node
                 for (int i = bSpare; i < needed; i++) {
-                    parent.appendChild(after.returnChild(0));
-                    after.removeChild(after.returnChild(0));
+                    parent.appendChild(right.returnChild(0));
+                    right.removeChild(right.returnChild(0));
                 }
-            } else if (before == null) {
+            } else if (left == null) {
                 // Take all keys from the after node if there's no before node
                 for (int i = 0; i < needed; i++) {
-                    parent.appendChild(after.returnChild(0));
-                    after.removeChild(after.returnChild(0));
+                    parent.appendChild(right.returnChild(0));
+                    right.removeChild(right.returnChild(0));
                 }
             } else {
                 // Take all keys from the before node if there's no after node
                 for (int i = 0; i < needed; i++) {
-                    parent.appendChild(before.returnChild(before.returnChildren().size() - 1 - i), 0);
-                    before.removeChild(before.returnChild(before.returnChildren().size() - 1 - i));
+                    parent.appendChild(left.returnChild(left.returnChildren().size() - 1 - i), 0);
+                    left.removeChild(left.returnChild(left.returnChildren().size() - 1 - i));
                 }
             }
             copy = parent.returnParent();
@@ -475,10 +482,11 @@ public class BPlusTree {
         ArrayList<Address> result = new ArrayList<>();
         int blockAccess = 1; // Access the root
         Node currentNode = root;
+        Node parentNode = new Node(true, false);
 
         // Searching for leaf node with the key
         while (!currentNode.returnLeaf()) {
-            Node parentNode = (Node) currentNode;
+            parentNode = (Node) currentNode;
             for (int i = 0; i < parentNode.returnKeys().size(); i++) {
                 if (key <= parentNode.returnKey(i)) {
                     currentNode = parentNode.returnChild(i);
@@ -574,7 +582,7 @@ public class BPlusTree {
                 }
             }
         }
-        System.out.println("B+ Tree Search: "+ String.format("%d records found with %d index nodes accessed", result.size(), nodeAccess));
+        System.out.println("B+ Tree Search in Range: "+ String.format("%d records found with %d index nodes accessed", result.size(), nodeAccess));
         return result;
     }
 

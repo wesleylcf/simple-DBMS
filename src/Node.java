@@ -15,8 +15,13 @@ public class Node {
         this.isLeaf = isLeaf;
         this.isRoot = false;
         this.isParent = isParent;
-        if(isParent){this.children = new ArrayList<Node>();}
-        if(isLeaf){records = new ArrayList<Address>();}
+        //this.children = null;
+        if(isParent) { 
+            this.children = new ArrayList<Node>();
+        }
+        if(isLeaf) {
+            this.records = new ArrayList<Address>();
+        }
     }
 
     /**
@@ -58,19 +63,21 @@ public class Node {
     public int returnSmallest() {
 
         int key;
-        Node copy;
+        Node copy = new Node(true, false);
         boolean isLeaf = this.returnLeaf();
 
         if (!isLeaf) {
 
-            copy = this;
+            Node test = this.returnChild(0);
+            copy = (Node) this;
 
             while (!copy.returnChild(0).returnLeaf())
-                copy = copy.returnChild(0);
+                copy = (Node) copy.returnChild(0);
             
             key = copy.returnChild(0).returnKey(0);
-        }
-        else{key = this.returnKey(0);} 
+        } else {
+            key = this.returnKey(0);
+        } 
         return key;
     }
 
@@ -86,14 +93,17 @@ public class Node {
         }
 
         if (this.isLeaf) {
-            Node copy = this;
+            Node copy = new Node(false, true);
+            copy = this;
             copy.records = new ArrayList<Address>();
             copy.setNext(null);
         }
         else {
-            if(this.isParent == false){System.out.println("Node needs ot be a parent.");}
-            else{
-                Node copy = this;
+            if (this.isParent == false) {
+                System.out.println("Node needs to be a parent.");
+            } else {
+                Node copy = new Node(true, false);
+                copy = this;
                 copy.children = new ArrayList<Node>();
             }
         }
@@ -153,8 +163,8 @@ public class Node {
      */
     public void removeChild(Node child){
         children.remove(child);
-        this.keys = new ArrayList<Integer>();
-        int size = this.children.size();
+        keys = new ArrayList<Integer>();
+        int size = children.size();
         for (int j = 0; j < size; j++) {
             if (j != 0){
                 int smallest = children.get(j).returnSmallest();
@@ -338,7 +348,21 @@ public class Node {
      * Deletes a key at a specified index
      */
     public void deleteKey(int index) {
-        // Delete the key using the index
-        keys.remove(index);
+        this.keys.remove(index);
+    }
+
+    public void insertChildToFront(Node newChild) {
+        // Insert this new child to the front.
+        children.add(0, newChild);
+        newChild.setParent(this);
+        deleteKeys();
+
+        int childNodesSetSize = children.size();
+        int targetKeyIndex = -1;
+        // Adjust the keys.
+        for (int ptr = 1; ptr < childNodesSetSize; ptr++) {
+            targetKeyIndex = children.get(ptr).returnSmallest();
+            appendKey(targetKeyIndex);
+        }
     }
 }
